@@ -158,8 +158,8 @@
 
     .b-fetch{grid-area:avatar;padding:20px!important;font-family:var(--mono);display:flex;flex-direction:column;justify-content:center}
     .fetch-head{display:flex;align-items:center;gap:10px}
-    .fetch-head img{width:34px;height:34px;border-radius:8px;border:1px solid var(--border)}
-    .fetch-user{font-size:13px;font-weight:700;color:var(--accent)}
+    .fetch-head img{width:34px;height:34px;border-radius:8px;border:1px solid var(--border);flex-shrink:0}
+    .fetch-user{font-size:13px;font-weight:700;color:var(--accent);min-width:0;overflow-wrap:anywhere;line-height:1.3}
     .fetch-user span{color:var(--text-dim)}
     .fetch-rule{height:1px;background:var(--border);margin:13px 0}
     .fetch-list{display:flex;flex-direction:column;gap:8px;font-size:11.5px}
@@ -341,7 +341,7 @@
       <div class="card b-fetch">
         <div class="fetch-head">
           <img src="https://github.com/navnithb2001.png" alt="Navnith Bharadwaj"/>
-          <span class="fetch-user">navnith<span>@</span>boulder</span>
+          <span class="fetch-user">navnith<span>@</span><wbr/>boulder</span>
         </div>
         <div class="fetch-rule"></div>
         <dl class="fetch-list">
