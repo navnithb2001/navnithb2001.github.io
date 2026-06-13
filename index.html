@@ -111,7 +111,7 @@
     [data-theme="light"] .theme-toggle .ico::before{content:'☀'}
 
     /* ---------- shared bits ---------- */
-    .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;font-size:13px;font-weight:600;border-radius:10px;text-decoration:none;border:1px solid var(--border);transition:all .2s;font-family:var(--mono)}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:42px;padding:10px 18px;font-size:13px;font-weight:600;border-radius:10px;text-decoration:none;border:1px solid var(--border);transition:all .2s;font-family:var(--mono)}
     .btn-solid{background:var(--text);color:var(--bg);border-color:transparent}
     .btn-solid:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(var(--accent-rgb),0.35)}
     .btn-line{color:var(--text);background:transparent}
@@ -155,6 +155,15 @@
     .typeline .word{color:var(--text);font-weight:600}
     .caret{display:inline-block;width:8px;height:1em;background:var(--accent2);vertical-align:text-bottom;animation:blink 1s step-end infinite;margin-left:2px}
     .b-intro .cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:4px}
+    .game-cta{display:flex;align-items:center;gap:14px;width:fit-content;max-width:100%;margin-top:2px;padding:14px 16px;border-radius:14px;border:1px solid rgba(var(--accent-rgb),0.5);background:linear-gradient(135deg,rgba(var(--accent-rgb),0.18),rgba(var(--accent2-rgb),0.1));color:var(--text);text-decoration:none;box-shadow:0 14px 36px rgba(var(--accent-rgb),0.16);transition:transform .2s,border-color .2s,box-shadow .2s,background .2s}
+    .game-cta:hover{transform:translateY(-2px);border-color:rgba(var(--accent2-rgb),0.75);box-shadow:0 18px 42px rgba(var(--accent-rgb),0.28);background:linear-gradient(135deg,rgba(var(--accent-rgb),0.24),rgba(var(--accent2-rgb),0.16))}
+    .game-cta:focus-visible,.btn:focus-visible{outline:2px solid var(--accent2);outline-offset:3px}
+    .game-cta .game-icon{display:grid;place-items:center;width:42px;height:42px;border-radius:12px;background:var(--text);color:var(--bg);font-size:21px;flex:0 0 auto}
+    .game-cta .game-copy{display:flex;flex-direction:column;gap:1px;min-width:0}
+    .game-cta .game-kicker{font-family:var(--mono);font-size:11px;font-weight:700;color:var(--accent2);letter-spacing:.04em;text-transform:uppercase}
+    .game-cta .game-title{font-family:var(--display);font-size:17px;font-weight:700;line-height:1.2}
+    .game-cta .game-arrow{margin-left:12px;font-family:var(--mono);font-size:18px;color:var(--accent);transition:transform .2s;flex:0 0 auto}
+    .game-cta:hover .game-arrow{transform:translate(2px,-2px)}
 
     .b-fetch{grid-area:avatar;padding:20px!important;font-family:var(--mono);display:flex;flex-direction:column;justify-content:center}
     .fetch-head{display:flex;align-items:center;gap:10px}
@@ -284,6 +293,10 @@
       .b-intro{padding:24px 20px!important}
       .b-intro .cta,.contact .cta{flex-direction:column;align-items:stretch}
       .b-intro .cta .btn,.contact .cta .btn{justify-content:center}
+      .game-cta{width:100%;padding:13px 14px}
+      .game-cta .game-icon{width:38px;height:38px}
+      .game-cta .game-title{font-size:16px}
+      .game-cta .game-arrow{margin-left:auto}
       .section{padding:48px 0 8px}
       .commit-card .when{text-align:left}
     }
@@ -334,8 +347,15 @@
           <a class="btn btn-solid" href="resume/Navnith_Bharadwaj_Resume.pdf" target="_blank">view resume</a>
           <a class="btn btn-line" href="resume/Navnith_Bharadwaj_Resume.pdf" download>download ↓</a>
           <a class="btn btn-line" href="#contact">say hello</a>
-          <a class="btn btn-line" href="https://navnithb2001.github.io/GamePortfolio/" target="_blank" rel="noopener">🎮 wanna play a game?</a>
         </div>
+        <a class="game-cta" href="https://navnithb2001.github.io/GamePortfolio/" target="_blank" rel="noopener" aria-label="Play Navnith's game portfolio">
+          <span class="game-icon" aria-hidden="true">🎮</span>
+          <span class="game-copy">
+            <span class="game-kicker">side quest</span>
+            <span class="game-title">Wanna play a game?</span>
+          </span>
+          <span class="game-arrow" aria-hidden="true">↗</span>
+        </a>
       </div>
 
       <div class="card b-fetch">
