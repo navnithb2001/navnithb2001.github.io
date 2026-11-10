@@ -409,9 +409,13 @@
             </div>
             <ul>
               <li>Shipped <b>Gmail and Sheets integrations</b> converting email into <b>coursework tasks</b>, cutting professor setup time by <span class="hl">60%</span>.</li>
+              <li>Built <b>consent-scoped cohort messaging</b> with mandatory <b>idempotency keys</b> and deterministic uuid5 fingerprints over a <b>frozen-audience batch row</b>, so a retry after a lost response redelivers what was authored rather than the current roster.</li>
+              <li><b>Separated persistence from delivery</b> across <span class="hl">3 channels</span>, treating a 2xx as delivered only when an <b>in-app receipt</b> exists, and <b>enforcing consent in SQL</b> so revoking a relationship retracts messages already in a student's inbox.</li>
+              <li>Built <span class="hl">3-layer deduplication</span> for Sheets sync using a normalizer that unifies openpyxl and Sheets API cell types, a <b>content hash</b> over the normalized grid, and a <b>file-keyed lineage key</b> so edited rows update in place instead of duplicating.</li>
+              <li>Gated every model call behind a <b>fail-closed allowlist</b> so tutor workbooks carrying parent phone numbers and portal logins <b>never reached an LLM</b>.</li>
             </ul>
             <div class="chiprow">
-              <span class="chip">gmail api</span><span class="chip">google sheets api</span><span class="chip">integrations</span>
+              <span class="chip">gmail api</span><span class="chip">google sheets api</span><span class="chip">integrations</span><span class="chip">idempotency</span><span class="chip">sql</span><span class="chip">deduplication</span><span class="chip">llm safety</span>
             </div>
           </div>
         </div>
@@ -424,10 +428,10 @@
               <div class="when">Aug 2023 — Aug 2025<br/>Bengaluru, India</div>
             </div>
             <ul>
-              <li>Led a <b>Backup and Disaster Recovery</b> automation platform spanning VM backup, database backup and recovery, and VM DR end-to-end, directing 1 engineer, adopted by <span class="hl">3 infra teams</span>.</li>
+              <li>Led an <b>internal developer platform</b> for <b>Backup and Disaster Recovery</b> spanning VM backup, database backup and recovery, and VM DR end-to-end, directing 1 engineer, adopted by <span class="hl">3 infra teams</span>.</li>
               <li>Designed and shipped <span class="hl">35 RBAC-secured REST APIs</span> and <b>GraphQL</b> schemas standardizing backup and recovery operations, cutting average request-to-execution time from <span class="hl">6 hours to 5 minutes</span>.</li>
               <li>Built <b>asynchronous execution pipelines</b> for long-running backup and recovery jobs, cutting user-facing wait times by <span class="hl">45%</span> for high-volume data processing.</li>
-              <li>Instituted <b>CI/CD pipelines</b>, peer code reviews, and unit and integration tests at <span class="hl">85% coverage</span>, cutting production rollback incidents by <span class="hl">35%</span>.</li>
+              <li>Instituted <b>CI/CD pipelines</b>, code reviews, and unit and integration tests at <span class="hl">85% coverage</span>, cutting production rollback incidents by <span class="hl">35%</span>.</li>
             </ul>
             <div class="chiprow">
               <span class="chip">python</span><span class="chip">fastapi</span><span class="chip">ansible</span><span class="chip">rest</span><span class="chip">graphql</span><span class="chip">rbac</span><span class="chip">async pipelines</span><span class="chip">ci/cd</span><span class="chip">backup &amp; dr</span>
@@ -465,8 +469,8 @@
           <div class="term-bar"><span class="tl r"></span><span class="tl y"></span><span class="tl g"></span><span class="term-path">~/projects/meshml</span></div>
           <div class="term-body">
             <a class="term-title" href="https://github.com/navnithb2001/MeshML" target="_blank" rel="noopener">MeshML — Distributed ML Training Platform</a>
-            <p class="term-desc">Distributed platform that trains a shared PyTorch model through a parameter server spread across 6 gRPC services. Async data-parallel SGD stays stable across 4 workers with staleness-aware aggregation and server-side momentum, and a React + Tailwind dashboard streams live training metrics over WebSockets at sub-65ms p95 API latency.</p>
-            <div class="term-stack"><span class="p">$ stack:</span> python · pytorch · <span class="s">grpc</span> · kubernetes · docker</div>
+            <p class="term-desc">Distributed platform that trains a shared PyTorch model through a parameter server spread across 6 gRPC services. Bidirectional streaming and bounded-staleness gradient aggregation keep async data-parallel SGD convergent across 4 heterogeneous CPU and GPU workers, with server-side momentum. Training runs on GKE Kubernetes with horizontal autoscaling, 256-sample dataset sharding and object-storage checkpointing, so a lost worker resumes instead of restarting the run. A React + Tailwind dashboard streams live training metrics over WebSockets at sub-65ms p95 API latency.</p>
+            <div class="term-stack"><span class="p">$ stack:</span> python · pytorch · <span class="s">grpc</span> · kubernetes · gke · docker</div>
           </div>
           <div class="term-foot"><a class="repo-link" href="https://github.com/navnithb2001/MeshML" target="_blank" rel="noopener">view repo →</a></div>
         </div>
@@ -475,7 +479,7 @@
           <div class="term-bar"><span class="tl r"></span><span class="tl y"></span><span class="tl g"></span><span class="term-path">~/projects/ab-testing-framework</span></div>
           <div class="term-body">
             <a class="term-title" href="https://github.com/navnithb2001/A-B-Testing-Framework-for-ML-models" target="_blank" rel="noopener">ML Model A/B Testing Framework</a>
-            <p class="term-desc">FastAPI framework that A/B tests champion vs. challenger models with hot-swappable, zero-downtime versions and consistent-hashing traffic routing. It scores accuracy, F1, AUC, and p95/p99 latency, runs Welch's t-test and z-test over 1,000 predictions to flag regressions, and automates promote / keep / review decisions from 95% confidence intervals.</p>
+            <p class="term-desc">FastAPI serving layer that deploys model versions against live traffic and A/B tests champion vs. challenger models with hot-swappable, zero-downtime versions and consistent-hashing traffic routing. It scores accuracy, F1, AUC, and p95/p99 latency, runs Welch's t-test and z-test over 1,000 predictions to flag regressions, and automates promote / keep / review decisions from 95% confidence intervals.</p>
             <div class="term-stack"><span class="p">$ stack:</span> python · <span class="s">fastapi</span> · scikit-learn · postgresql</div>
           </div>
           <div class="term-foot"><a class="repo-link" href="https://github.com/navnithb2001/A-B-Testing-Framework-for-ML-models" target="_blank" rel="noopener">view repo →</a></div>
@@ -485,10 +489,28 @@
           <div class="term-bar"><span class="tl r"></span><span class="tl y"></span><span class="tl g"></span><span class="term-path">~/projects/f1-telemetry-to-narrative</span></div>
           <div class="term-body">
             <a class="term-title" href="https://github.com/navnithb2001/F1-Telemetry-to-Narrative-AI-Agent-Pipeline" target="_blank" rel="noopener">F1 Telemetry-to-Narrative AI Agent Pipeline</a>
-            <p class="term-desc">6-stage LLM pipeline that turns 50 telemetry frames per session into commentary using local MLX models and OpenAI. Includes an A/B comparison of local vs. frontier-LLM output, a 2,000-pair SFT dataset for fine-tuning, and Pydantic-validated JSONL traces with full ID linkage for reproducibility, streamed over Server-Sent Events.</p>
+            <p class="term-desc">Co-built 6-stage agentic AI pipeline that turns 50 telemetry frames per session into commentary using on-device MLX models and OpenAI, with RAG-style retrieval. Includes an A/B comparison of local vs. frontier-LLM output, a 2,000-pair SFT dataset for fine-tuning, and Pydantic-validated JSONL traces with full ID linkage for reproducibility, streamed over Server-Sent Events.</p>
             <div class="term-stack"><span class="p">$ stack:</span> python · <span class="s">mlx</span> · openai · pydantic · sse</div>
           </div>
           <div class="term-foot"><a class="repo-link" href="https://github.com/navnithb2001/F1-Telemetry-to-Narrative-AI-Agent-Pipeline" target="_blank" rel="noopener">view repo →</a></div>
+        </div>
+
+        <div class="card term reveal rd1">
+          <div class="term-bar"><span class="tl r"></span><span class="tl y"></span><span class="tl g"></span><span class="term-path">~/projects/drone-fire-detection</span></div>
+          <div class="term-body">
+            <span class="term-title">Fire Detection on Drone-Captured Images</span>
+            <p class="term-desc">Co-built drone fire detection, training YOLOv8n, s and m on synthetic and real datasets and ensembling them to 0.99 precision.</p>
+            <div class="term-stack"><span class="p">$ stack:</span> python · <span class="s">yolov8</span> · opencv</div>
+          </div>
+        </div>
+
+        <div class="card term reveal rd2">
+          <div class="term-bar"><span class="tl r"></span><span class="tl y"></span><span class="tl g"></span><span class="term-path">~/projects/fingerprint-ridge-wear</span></div>
+          <div class="term-body">
+            <span class="term-title">Fingerprint Ridge-Wear Analysis for Occupational Inference</span>
+            <p class="term-desc">Tested whether fingerprint ridge-wear predicts occupation over 248 images, reporting a negative result after a confound check.</p>
+            <div class="term-stack"><span class="p">$ stack:</span> python · <span class="s">scikit-learn</span> · scikit-image · opencv</div>
+          </div>
         </div>
 
         <div class="card term reveal rd2">
@@ -519,6 +541,12 @@
           <span class="mq-item hot">GraphQL</span><span class="mq-item hot">gRPC</span><span class="mq-item">Microservices</span><span class="mq-item hot">PostgreSQL</span><span class="mq-item hot">Redis</span><span class="mq-item">MySQL</span><span class="mq-item">MongoDB</span><span class="mq-item hot">Kubernetes</span><span class="mq-item hot">Docker</span><span class="mq-item">AWS</span><span class="mq-item">Azure</span><span class="mq-item">GCP</span><span class="mq-item hot">CI/CD</span><span class="mq-item">Git</span><span class="mq-item">Linux</span><span class="mq-item">Monitoring</span><span class="mq-item">Data Modeling</span><span class="mq-item">Data Structures</span><span class="mq-item">Algorithms</span><span class="mq-item">OOD</span>
         </div>
       </div>
+      <div class="marquee" aria-label="Machine learning, AI and tooling skills">
+        <div class="mq-track">
+          <span class="mq-item hot">PyTorch</span><span class="mq-item">TensorFlow</span><span class="mq-item hot">LLM APIs</span><span class="mq-item hot">RAG</span><span class="mq-item hot">Agentic Pipelines</span><span class="mq-item hot">Distributed Training</span><span class="mq-item">Computer Vision</span><span class="mq-item">Model Evaluation</span><span class="mq-item hot">OpenCV</span><span class="mq-item">scikit-learn</span><span class="mq-item">GKE</span><span class="mq-item">Ansible</span><span class="mq-item">OAuth</span><span class="mq-item">pytest</span><span class="mq-item">Code Reviews</span><span class="mq-item hot">Latency Profiling</span><span class="mq-item">Debugging</span><span class="mq-item hot">AI-Assisted Development</span>
+          <span class="mq-item hot">PyTorch</span><span class="mq-item">TensorFlow</span><span class="mq-item hot">LLM APIs</span><span class="mq-item hot">RAG</span><span class="mq-item hot">Agentic Pipelines</span><span class="mq-item hot">Distributed Training</span><span class="mq-item">Computer Vision</span><span class="mq-item">Model Evaluation</span><span class="mq-item hot">OpenCV</span><span class="mq-item">scikit-learn</span><span class="mq-item">GKE</span><span class="mq-item">Ansible</span><span class="mq-item">OAuth</span><span class="mq-item">pytest</span><span class="mq-item">Code Reviews</span><span class="mq-item hot">Latency Profiling</span><span class="mq-item">Debugging</span><span class="mq-item hot">AI-Assisted Development</span>
+        </div>
+      </div>
       <div class="skills-note">// highlighted = daily drivers · hover to pause</div>
     </section>
 
@@ -533,7 +561,7 @@
           </div>
           <div class="deg">M.S. in Computer Science</div>
           <div class="meta">Aug 2025 — May 2027 · Boulder, CO</div>
-          <div class="courses"><b>coursework:</b> Big Data, Deep Learning, Neural Networks, NLP, Computer Vision</div>
+          <div class="courses"><b>coursework:</b> Neural Nets &amp; Deep Learning, Computer Vision, NLP, Big Data Architecture, Quantum Computation</div>
         </div>
         <div class="card edu reveal rd1">
           <div class="top">
